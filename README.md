@@ -100,4 +100,4 @@ SHOSETSU_DIR=/path/to/paraline-raygun/shosetsu cargo test -p raygun-ext-host -- 
 
 ## Licence
 
-Openverse audio is MIT. The scripts are adapted from [shosetsuorg/extensions](https://gitlab.com/shosetsuorg/extensions) and stay under the GNU GPL v3 (`LICENSE`); each names its source in its header. The libraries in `shosetsu/lib/` (and their copies in `lib/`) are unchanged from the official repository: `dkjson` keeps its own MIT licence, stated in the file, and `url` comes from the same repository. Raygun's extensions are published under their own licences in Raygun's repository.
+Openverse audio is MIT. The scripts are adapted from [shosetsuorg/extensions](https://gitlab.com/shosetsuorg/extensions) and stay under the GNU GPL v3 (`LICENSE`); each names its source in its header. The libraries in `shosetsu/lib/` (copied to `lib/`) are unchanged copies from the same repository; `dkjson` keeps its own MIT licence, stated in the file. Raygun's extensions are published under their own licences in Raygun's repository.
