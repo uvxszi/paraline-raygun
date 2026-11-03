@@ -1,0 +1,425 @@
+{
+  "formatVersion": 1,
+  "name": "Paraline",
+  "extensions": [
+    {
+      "id": "dev.raygun.apple-charts",
+      "name": "Apple Music charts",
+      "version": "1.1.0",
+      "apiVersion": 1,
+      "description": "The most played songs on Apple Music in your country, and each genre's top songs on the iTunes Store, from Apple's public charts feeds.",
+      "author": "Raygun",
+      "provides": [
+        "music.charts"
+      ],
+      "permissions": {
+        "net": [
+          "rss.marketingtools.apple.com",
+          "itunes.apple.com"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.apple-charts-1.1.0.zip",
+      "sha256": "5dee8c9444cf12a84ee5a79848d754730c6fd19c1a75ac57d7c99c9dbc88d745",
+      "size": 2360
+    },
+    {
+      "id": "dev.raygun.audius",
+      "name": "Audius",
+      "version": "1.0.0",
+      "apiVersion": 1,
+      "description": "Trending and underground songs by genre from Audius, the open music platform where artists upload their own songs, playable in full. No account needed.",
+      "author": "Raygun",
+      "provides": [
+        "music.charts",
+        "music.metadata",
+        "music.stream"
+      ],
+      "permissions": {
+        "net": [
+          "api.audius.co"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.audius-1.0.0.zip",
+      "sha256": "53ac1e27fa839398837cc029680f991520f755a32584a4b0d9bb7c87b2b44867",
+      "size": 2578
+    },
+    {
+      "id": "dev.raygun.deezer",
+      "name": "Deezer",
+      "version": "1.4.0",
+      "apiVersion": 1,
+      "description": "Song, artist and album search, charts (the top songs, each genre's and the decades'), songs for any genre or mood, song genres, and similar artists, new releases and radios for Made for You, from Deezer's public API.",
+      "author": "Raygun",
+      "provides": [
+        "music.charts",
+        "music.tags",
+        "music.metadata",
+        "music.recommend"
+      ],
+      "permissions": {
+        "net": [
+          "api.deezer.com"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.deezer-1.4.0.zip",
+      "sha256": "5d60ecefb11a7026377dd8d7d4148045c7ecb2c1d3763a12c5ae2a3507095d71",
+      "size": 4333
+    },
+    {
+      "id": "dev.raygun.gutenberg",
+      "name": "Project Gutenberg",
+      "version": "1.0.1",
+      "apiVersion": 1,
+      "description": "Over 70,000 free public-domain books from Project Gutenberg, split into chapters to read like a novel.",
+      "author": "Raygun",
+      "provides": [
+        "novel.source"
+      ],
+      "permissions": {
+        "net": [
+          "www.gutenberg.org",
+          "gutenberg.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.gutenberg-1.0.1.zip",
+      "sha256": "bb5d72f6c20dc2c020f18161081229759e3f8cf970d16103132255e716cf20e2",
+      "size": 2873
+    },
+    {
+      "id": "dev.raygun.internet-archive",
+      "name": "Internet Archive",
+      "version": "1.3.0",
+      "apiVersion": 1,
+      "description": "Public-domain and Creative Commons audio and films from the Internet Archive.",
+      "author": "Raygun",
+      "provides": [
+        "music.metadata",
+        "music.stream",
+        "video.source"
+      ],
+      "permissions": {
+        "net": [
+          "archive.org",
+          "*.archive.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.internet-archive-1.3.0.zip",
+      "sha256": "1d5f97db89d6ad0524ae6cf667ce67ae7b692d26a045c7742e12745da255e497",
+      "size": 5352
+    },
+    {
+      "id": "dev.raygun.kugou",
+      "name": "KuGou lyrics",
+      "version": "1.0.0",
+      "apiVersion": 1,
+      "description": "Synced lyrics from KuGou's lyric service, as Kreate and RiMusic use it: strong on Chinese, Japanese and Korean songs, and many others.",
+      "author": "Raygun",
+      "provides": [
+        "lyrics"
+      ],
+      "permissions": {
+        "net": [
+          "krcs.kugou.com",
+          "mobileservice.kugou.com"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.kugou-1.0.0.zip",
+      "sha256": "0788d451324249c1823085be56136bc64cde9730a819f308e9cb0a05e03bf2ae",
+      "size": 2506
+    },
+    {
+      "id": "dev.raygun.librivox",
+      "name": "LibriVox",
+      "version": "1.0.0",
+      "apiVersion": 1,
+      "description": "Free public-domain audiobooks read by LibriVox volunteers, found through the Internet Archive and played chapter by chapter.",
+      "author": "Raygun",
+      "provides": [
+        "audiobook.directory"
+      ],
+      "permissions": {
+        "net": [
+          "archive.org",
+          "librivox.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.librivox-1.0.0.zip",
+      "sha256": "489e63428da79c4be9858ad742de357d15cddbb6b1bd82e18b2e00031a739547",
+      "size": 1755
+    },
+    {
+      "id": "dev.raygun.listenbrainz",
+      "name": "ListenBrainz",
+      "version": "1.1.0",
+      "apiVersion": 1,
+      "description": "The songs most listened to on the open ListenBrainz service this week, month and year, fresh singles, and songs for any genre or mood from its tag radio.",
+      "author": "Raygun",
+      "provides": [
+        "music.charts"
+      ],
+      "permissions": {
+        "net": [
+          "api.listenbrainz.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.listenbrainz-1.1.0.zip",
+      "sha256": "5314a5affd0498f2bddbd5cdb03046a5a3e15822b99d0c17c8eb44a3bd579d50",
+      "size": 2329
+    },
+    {
+      "id": "dev.raygun.lrclib",
+      "name": "LRCLIB",
+      "version": "1.0.2",
+      "apiVersion": 1,
+      "description": "Synced lyrics from the open LRCLIB database.",
+      "author": "Raygun",
+      "provides": [
+        "lyrics"
+      ],
+      "permissions": {
+        "net": [
+          "lrclib.net"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.lrclib-1.0.2.zip",
+      "sha256": "3ba78f35c905d659886991baae0702e04cae90b9b6a159c3a8c0fd00745a9990",
+      "size": 1879
+    },
+    {
+      "id": "dev.raygun.mangadex",
+      "name": "MangaDex",
+      "version": "1.2.0",
+      "apiVersion": 1,
+      "description": "Manga from MangaDex, the scanlation library run by its community. Covers and pages load through Raygun.",
+      "author": "Raygun",
+      "provides": [
+        "manga.source"
+      ],
+      "permissions": {
+        "net": [
+          "api.mangadex.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "suggestive",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.mangadex-1.2.0.zip",
+      "sha256": "323a1262f666375368212b83f3bc54cf4c179ef788802bb979de269af78f8f69",
+      "size": 3928
+    },
+    {
+      "id": "dev.raygun.musicbrainz",
+      "name": "MusicBrainz",
+      "version": "1.5.0",
+      "apiVersion": 1,
+      "description": "Song search, song genres, artist facts and song credits from the open MusicBrainz database, with artist summaries from Wikipedia. Results play through streaming extensions.",
+      "author": "Raygun",
+      "provides": [
+        "music.metadata",
+        "music.tags",
+        "music.info"
+      ],
+      "permissions": {
+        "net": [
+          "musicbrainz.org",
+          "www.wikidata.org",
+          "en.wikipedia.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.musicbrainz-1.5.0.zip",
+      "sha256": "37bed2c7555b32b98e407c860c79099ecf14bc5125f836af25c6a1744f179b8c",
+      "size": 4974
+    },
+    {
+      "id": "dev.raygun.peertube",
+      "name": "PeerTube",
+      "version": "1.0.0",
+      "apiVersion": 1,
+      "description": "Videos and live streams from PeerTube's federated instances, found through SepiaSearch. Its own pill in Search.",
+      "author": "Raygun",
+      "provides": [
+        "video.source"
+      ],
+      "permissions": {
+        "net": [
+          "*"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.peertube-1.0.0.zip",
+      "sha256": "eca71066e36b0f99768e5f0e56e959f95c38fec75f3199f875f0ccb814332501",
+      "size": 2178
+    },
+    {
+      "id": "dev.raygun.podcast-directory",
+      "name": "Podcast directory",
+      "version": "1.0.1",
+      "apiVersion": 1,
+      "description": "Search millions of podcasts and browse the top shows, through Apple's public iTunes Search API.",
+      "author": "Raygun",
+      "provides": [
+        "podcast.directory"
+      ],
+      "permissions": {
+        "net": [
+          "itunes.apple.com",
+          "rss.marketingtools.apple.com"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.podcast-directory-1.0.1.zip",
+      "sha256": "5a4fed1eab9b168f0e42d7eef38288475b8413bb437bd874eecbb58f23fdea95",
+      "size": 1616
+    },
+    {
+      "id": "dev.raygun.radio-browser",
+      "name": "Radio Browser",
+      "version": "1.0.1",
+      "apiVersion": 1,
+      "description": "Live internet radio from the community-run radio-browser.info station directory.",
+      "author": "Raygun",
+      "provides": [
+        "music.metadata"
+      ],
+      "permissions": {
+        "net": [
+          "*.api.radio-browser.info"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.radio-browser-1.0.1.zip",
+      "sha256": "da2ab6e6c7bdfa51a84ef391d47055c7f4e3e5e896cc94097f9ee6ac4548d940",
+      "size": 2319
+    },
+    {
+      "id": "dev.raygun.youtube",
+      "name": "YouTube",
+      "version": "2.3.0",
+      "apiVersion": 1,
+      "description": "Music search, playlists (community and featured) and lyrics through YouTube Music, and videos and live streams in Search's YouTube pill, all played in YouTube's own embedded player. No key needed; add your own YouTube Data API key to use the official API for music instead.",
+      "author": "Raygun",
+      "provides": [
+        "music.metadata",
+        "music.stream",
+        "video.source",
+        "lyrics"
+      ],
+      "permissions": {
+        "net": [
+          "music.youtube.com",
+          "www.youtube.com",
+          "www.googleapis.com"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.youtube-2.3.0.zip",
+      "sha256": "51c746274d2e9bcf7ae1590b4f1fb961f7f0b637bcdc5434395e1836935ddaaf",
+      "size": 7872
+    },
+    {
+      "id": "community.paraline.openverse",
+      "name": "Openverse audio",
+      "version": "1.0.1",
+      "apiVersion": 1,
+      "description": "Openly licensed songs and sounds from Openverse (Jamendo, Freesound, Wikimedia Commons and more), searchable and playable in full. No account needed.",
+      "author": "Paraline",
+      "provides": [
+        "music.metadata",
+        "music.stream"
+      ],
+      "permissions": {
+        "net": [
+          "api.openverse.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "raygun/packages/community.paraline.openverse-1.0.1.zip",
+      "sha256": "3b23ad692933df8d284e0850cf9a74ef706e02015d17125c134dd7250c3ec00b",
+      "size": 1573
+    },
+    {
+      "id": "shosetsu.en.wattpad",
+      "name": "Wattpad",
+      "version": "1.0.8",
+      "apiVersion": 1,
+      "description": "Stories from Wattpad's writing community: search, story pages and whole chapters.",
+      "author": "Confident-hate",
+      "provides": [
+        "novel.source"
+      ],
+      "permissions": {
+        "net": [
+          "*"
+        ],
+        "webview": false
+      },
+      "contentRating": "suggestive",
+      "lang": "en",
+      "package": "shosetsu/src/en/Wattpad.lua",
+      "icon": "https://cdn-icons-png.flaticon.com/512/2111/2111715.png",
+      "sha256": "91c05bedfb92710744dbc1187b113e306db6b1481d0b2e4b059764a8a28895a7",
+      "size": 6788,
+      "format": "shosetsu"
+    },
+    {
+      "id": "shosetsu.ja.syosetsu",
+      "name": "Syosetsu",
+      "version": "2.2.6",
+      "apiVersion": 1,
+      "description": "Japanese web novels from Syosetsu (Shōsetsuka ni Narō): search, rankings and chapters with their forewords and afterwords.",
+      "author": "Bigrand, Doomsdayrs",
+      "provides": [
+        "novel.source"
+      ],
+      "permissions": {
+        "net": [
+          "*"
+        ],
+        "webview": false
+      },
+      "contentRating": "suggestive",
+      "lang": "ja",
+      "package": "shosetsu/src/ja/Syosetsu.lua",
+      "icon": "https://gitlab.com/shosetsuorg/extensions/-/raw/dev/icons/Syosetsu.png",
+      "sha256": "00d27e75ae29c21a541505ca79d99a48e092cad8bbca3991a78abfaaaf8da8fc",
+      "size": 6354,
+      "format": "shosetsu"
+    }
+  ],
+  "libraries": [
+    {
+      "name": "dkjson",
+      "ver": "1.0.1",
+      "hash": "97803cfe54b21695dda1e8f8a37c5933c4dc7691e5df17c2c1df6cef1203c259"
+    },
+    {
+      "name": "url",
+      "ver": "1.0.0",
+      "hash": "f34c81389a1f13b2f6c9caac7b3c098708cab8b4de27f8081812a65ead7bc51a"
+    }
+  ]
+}

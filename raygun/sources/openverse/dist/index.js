@@ -1,10 +1,11 @@
-// community.paraline.openverse 1.0.0. Built by raygun-ext from src/index.ts; do not edit.
+// community.paraline.openverse 1.0.1. Built by raygun-ext from src/index.ts; do not edit.
 (() => {
   // src/index.ts
   var API = "https://api.openverse.org/v1/audio/";
-  var MAX = 50;
+  var MAX = 20;
   var get = async (query, size) => {
-    var url = API + "?q=" + encodeURIComponent(query) + "&page_size=" + Math.min(MAX, Math.max(1, size)) + "&mature=false";
+    var url = API + "?q=" + encodeURIComponent(query) + "&page_size=" + Math.min(MAX, Math.max(1, size)) + // Asked of Openverse too, so a page isn't spent on sound effects.
+    "&category=music,audiobook&mature=false";
     var response = await raygun.http.fetch(url);
     if (!response.ok) throw new Error("Openverse answered HTTP " + response.status);
     var body = await response.json();
@@ -12,6 +13,7 @@
   };
   var playable = (work) => work && work.url && (!work.category || work.category === "music" || work.category === "audiobook");
   var source = (work) => ({ kind: "url", url: work.url, headers: {} });
+  var format = (filetype) => typeof filetype === "string" && filetype ? filetype.replace(/^mp3\d+$/i, "mp3").toUpperCase() : null;
   var toTrack = (work) => ({
     id: work.id,
     title: work.title || "Untitled",
@@ -45,7 +47,7 @@
           title: work.title || "Untitled",
           artist: work.creator || null,
           durationMs: typeof work.duration === "number" ? work.duration : null,
-          quality: work.filetype ? work.filetype.toUpperCase() : null,
+          quality: format(work.filetype),
           bitrateKbps: typeof work.bit_rate === "number" ? Math.round(work.bit_rate / 1e3) : null,
           source: source(work)
         }))

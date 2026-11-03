@@ -1,11 +1,12 @@
-// Openverse audio — Paraline Raygun, MIT.
+// Openverse audio — Paraline, MIT.
 // Openly licensed audio from Openverse's public API: search, and full streams from each work's
 // own file (Jamendo, Freesound, Wikimedia Commons…).
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare const raygun: any;
 
 var API = "https://api.openverse.org/v1/audio/";
-var MAX = 50;
+// The most Openverse returns per page without an API key; more is refused with HTTP 401.
+var MAX = 20;
 
 var get = async (query: string, size: number): Promise<any[]> => {
   var url =
@@ -14,6 +15,8 @@ var get = async (query: string, size: number): Promise<any[]> => {
     encodeURIComponent(query) +
     "&page_size=" +
     Math.min(MAX, Math.max(1, size)) +
+    // Asked of Openverse too, so a page isn't spent on sound effects.
+    "&category=music,audiobook" +
     "&mature=false";
   var response = await raygun.http.fetch(url);
   if (!response.ok) throw new Error("Openverse answered HTTP " + response.status);
@@ -26,6 +29,10 @@ var playable = (work: any) =>
   work && work.url && (!work.category || work.category === "music" || work.category === "audiobook");
 
 var source = (work: any) => ({ kind: "url", url: work.url, headers: {} });
+
+// Jamendo names its MP3 encodings "mp31" and "mp32".
+var format = (filetype: any) =>
+  typeof filetype === "string" && filetype ? filetype.replace(/^mp3\d+$/i, "mp3").toUpperCase() : null;
 
 var toTrack = (work: any) => ({
   id: work.id,
@@ -66,7 +73,7 @@ raygun.providers.register({
           title: work.title || "Untitled",
           artist: work.creator || null,
           durationMs: typeof work.duration === "number" ? work.duration : null,
-          quality: work.filetype ? work.filetype.toUpperCase() : null,
+          quality: format(work.filetype),
           bitrateKbps: typeof work.bit_rate === "number" ? Math.round(work.bit_rate / 1000) : null,
           source: source(work),
         })),
