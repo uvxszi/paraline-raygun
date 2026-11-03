@@ -1,0 +1,28 @@
+{
+  "formatVersion": 1,
+  "name": "Paraline Raygun",
+  "extensions": [
+    {
+      "id": "community.paraline.openverse",
+      "name": "Openverse audio",
+      "version": "1.0.0",
+      "apiVersion": 1,
+      "description": "Openly licensed songs and sounds from Openverse (Jamendo, Freesound, Wikimedia Commons and more), searchable and playable in full. No account needed.",
+      "author": "Paraline Raygun",
+      "provides": [
+        "music.metadata",
+        "music.stream"
+      ],
+      "permissions": {
+        "net": [
+          "api.openverse.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "packages/community.paraline.openverse-1.0.0.zip",
+      "sha256": "ef09cbab7de959be8df7d89e2d0700c4088d09da1cc784da50a972176473f243",
+      "size": 1472
+    }
+  ]
+}
