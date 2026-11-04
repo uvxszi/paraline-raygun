@@ -36,7 +36,7 @@ Raygun 1.0.0 used two separate addresses, which stay published: `raygun/index.js
 | Blender open movies | CC BY, CC BY-SA | Blender Studio's open movies |
 | Pepper&Carrot | CC BY 4.0 | David Revoy's webcomic |
 | xkcd | CC BY-NC 2.5 | Randall Munroe's webcomic |
-| MusicBrainz | CC0, CC BY-SA (metadata) | Song, album and artist details, genres and credits |
+| MusicBrainz | CC0, CC BY-SA (metadata) | Song, album and artist details, genres, credits and cover art from the Cover Art Archive |
 | Openverse audio | Creative Commons, CC0, Public Domain Mark | Songs from Jamendo, Freesound, Wikimedia Commons and more |
 
 Raygun's own sources are listed by their address in Raygun's repository (`repo/` in `uvxszi/raygun`). Openverse audio is a community source kept here, in `raygun/`.
