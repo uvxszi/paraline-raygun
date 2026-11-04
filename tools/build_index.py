@@ -1,13 +1,13 @@
 """Writes Paraline's indexes.
 
 - index.json: Paraline, the one index Raygun adds. It lists
-  - every first-party extension of Raygun, from a Raygun checkout's repo/ folder; their
-    packages stay in Raygun's repository and are listed by their address there;
+  - Raygun's first-party extensions, from a Raygun checkout's repo/ folder; their packages stay
+    in Raygun's repository and are listed by their address there;
   - the Raygun-format sources in raygun/ (raygun/index.json, written by raygun-ext);
-  - the novel sources in shosetsu/ (Shosetsu scripts), with the libraries they need.
+  - the scripts in shosetsu/src/ (Shosetsu's format), if any, with the libraries they need.
 - lib/: copies of shosetsu/lib/. Raygun reads a script's libraries from lib/ beside the index.
-- shosetsu/index.json: the novel sources as a Shosetsu repository, for Shosetsu itself and for
-  Raygun 1.0.0, which added it as "Paraline Raygun".
+- shosetsu/index.json: the scripts as a Shosetsu repository. Raygun 1.0.0 added this address as
+  "Paraline Raygun", so it stays published, and lists nothing while Paraline carries no scripts.
 
 raygun/index.json is left as raygun-ext writes it; Raygun 1.0.0 reads it too.
 
@@ -15,9 +15,10 @@ Every extension in Raygun's extensions/ folder must be published in its repo/ fo
 current version (`pnpm repo:publish` there), and that commit pushed before this one: the index
 points at the packages on GitHub. The same goes for raygun/sources/ and raygun/.
 
-Each script's and library's first line is Shosetsu's metadata comment:
-`-- {"id":3,"ver":"2.2.6","libVer":"1.0.0",...}`. Hashes are SHA-256, in the field Shosetsu's
-index calls "md5" for scripts and "hash" for libraries.
+A script's first line is Shosetsu's metadata comment:
+`-- {"id":3,"ver":"2.2.6","libVer":"1.0.0",...}`, and each script needs a description in
+DESCRIPTIONS that names the licence of the texts it reads. Hashes are SHA-256, in the field
+Shosetsu's index calls "md5" for scripts and "hash" for libraries.
 
 Run: python tools/build_index.py [--raygun ../raygun] [--allow-unpublished]
 """
@@ -37,16 +38,8 @@ NAME = "Paraline"
 # Where Raygun's repo/ folder is published.
 RAYGUN_REPO = "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/"
 ICONS = "https://gitlab.com/shosetsuorg/extensions/-/raw/dev/icons/"
-# Icons for scripts whose original lists one elsewhere.
-ICON_OVERRIDES = {
-    "Wattpad": "https://cdn-icons-png.flaticon.com/512/2111/2111715.png",
-}
-# What each novel source gives, for Raygun's catalogue.
-DESCRIPTIONS = {
-    "Syosetsu": "Japanese web novels from Syosetsu (Shōsetsuka ni Narō): search, rankings and "
-    "chapters with their forewords and afterwords.",
-    "Wattpad": "Stories from Wattpad's writing community: search, story pages and whole chapters.",
-}
+# What each script gives and under which licence, for Raygun's catalogue, by file name.
+DESCRIPTIONS = {}
 API_VERSION = 1
 
 
@@ -151,14 +144,17 @@ def community_sources(allow_unpublished):
     return entries
 
 
-def novel_sources():
+def scripts_and_entries():
     """The Shosetsu scripts, as Shosetsu index entries and as Raygun index entries."""
     scripts, entries = [], []
     for path in sorted((SHOSETSU / "src").glob("*/*.lua")):
         meta = header(path)
         name, lang = path.stem, path.parent.name
+        description = DESCRIPTIONS.get(name)
+        if not description:
+            fail(f"{path}: add its description, naming the licence of its texts, to DESCRIPTIONS")
         data = path.read_bytes()
-        icon = ICON_OVERRIDES.get(name, f"{ICONS}{name}.png")
+        icon = f"{ICONS}{name}.png"
         scripts.append({
             "id": meta["id"],
             "name": meta.get("name", name),
@@ -171,17 +167,17 @@ def novel_sources():
             "type": "LuaScript",
         })
         entries.append({
-            # The id Raygun gives this script in Shosetsu's repository, so a fixed copy installs
-            # as an update over the original.
+            # The id Raygun gives this script in Shosetsu's repository, so a copy installs as the
+            # same source.
             "id": f"shosetsu.{id_label(lang)}.{id_label(name)}",
             "name": meta.get("name", name),
             "version": meta["ver"],
             "apiVersion": API_VERSION,
-            "description": DESCRIPTIONS.get(name, f"{name} ({lang}), a novel source."),
+            "description": description,
             "author": meta.get("author"),
             "provides": ["novel.source"],
             "permissions": {"net": ["*"], "webview": False},
-            "contentRating": "suggestive",
+            "contentRating": "safe",
             "lang": lang,
             "package": f"shosetsu/src/{lang}/{path.name}",
             "icon": icon,
@@ -201,9 +197,10 @@ def libraries():
 
 
 def copy_libraries():
-    """lib/ holds exactly shosetsu/lib/'s files, byte for byte."""
-    LIB.mkdir(exist_ok=True)
+    """lib/ holds exactly shosetsu/lib/'s files, byte for byte (and is left out without any)."""
     wanted = {path.name for path in (SHOSETSU / "lib").glob("*.lua")}
+    if wanted:
+        LIB.mkdir(exist_ok=True)
     for stale in LIB.glob("*.lua"):
         if stale.name not in wanted:
             stale.unlink()
@@ -223,16 +220,17 @@ def main():
     if not (raygun / "repo" / "index.json").is_file():
         fail(f"{raygun} isn't a Raygun checkout (no repo/index.json); pass --raygun")
 
-    scripts, novels = novel_sources()
+    scripts, script_entries = scripts_and_entries()
     libs = libraries()
     first_party = raygun_extensions(raygun, arguments.allow_unpublished)
     community = community_sources(arguments.allow_unpublished)
-    extensions = first_party + community + novels
+    extensions = first_party + community + script_entries
     ids = [entry["id"] for entry in extensions]
     duplicates = sorted({extension for extension in ids if ids.count(extension) > 1})
     if duplicates:
         fail("listed twice: " + ", ".join(duplicates))
 
+    SHOSETSU.mkdir(exist_ok=True)
     write_json(SHOSETSU / "index.json",
                {"authors": [], "libraries": libs, "scripts": scripts, "styles": [], "js": []})
     copy_libraries()
@@ -243,7 +241,7 @@ def main():
         "libraries": [{key: lib[key] for key in ("name", "ver", "hash")} for lib in libs],
     })
     print(f"index.json: {count(first_party, 'Raygun extension')}, "
-          f"{count(community, 'community source')}, {count(novels, 'novel source')}, "
+          f"{count(community, 'community source')}, {count(script_entries, 'script')}, "
           f"{count(libs, 'library', 'libraries')}")
     print(f"shosetsu/index.json: {count(scripts, 'script')}")
 

@@ -1,11 +1,11 @@
 {
   "id": "community.paraline.openverse",
   "name": "Openverse audio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "apiVersion": 1,
   "runtime": "js",
   "entry": "dist/index.js",
-  "description": "Openly licensed songs and sounds from Openverse (Jamendo, Freesound, Wikimedia Commons and more), searchable and playable in full. No account needed.",
+  "description": "Creative Commons and public domain: songs from Openverse (Jamendo, Freesound, Wikimedia Commons and more), searchable and playable in full. No account needed.",
   "author": "Paraline",
   "website": "https://openverse.org/audio",
   "provides": [

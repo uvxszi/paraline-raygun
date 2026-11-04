@@ -1,43 +1,7 @@
 {
   "authors": [],
-  "libraries": [
-    {
-      "name": "dkjson",
-      "ver": "1.0.1",
-      "url": null,
-      "hash": "97803cfe54b21695dda1e8f8a37c5933c4dc7691e5df17c2c1df6cef1203c259"
-    },
-    {
-      "name": "url",
-      "ver": "1.0.0",
-      "url": null,
-      "hash": "f34c81389a1f13b2f6c9caac7b3c098708cab8b4de27f8081812a65ead7bc51a"
-    }
-  ],
-  "scripts": [
-    {
-      "id": 95556,
-      "name": "Wattpad",
-      "fileName": "Wattpad",
-      "imageURL": "https://cdn-icons-png.flaticon.com/512/2111/2111715.png",
-      "lang": "en",
-      "ver": "1.0.8",
-      "libVer": "1.0.0",
-      "md5": "91c05bedfb92710744dbc1187b113e306db6b1481d0b2e4b059764a8a28895a7",
-      "type": "LuaScript"
-    },
-    {
-      "id": 3,
-      "name": "Syosetsu",
-      "fileName": "Syosetsu",
-      "imageURL": "https://gitlab.com/shosetsuorg/extensions/-/raw/dev/icons/Syosetsu.png",
-      "lang": "ja",
-      "ver": "2.2.6",
-      "libVer": "1.0.0",
-      "md5": "00d27e75ae29c21a541505ca79d99a48e092cad8bbca3991a78abfaaaf8da8fc",
-      "type": "LuaScript"
-    }
-  ],
+  "libraries": [],
+  "scripts": [],
   "styles": [],
   "js": []
 }

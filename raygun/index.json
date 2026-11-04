@@ -5,9 +5,9 @@
     {
       "id": "community.paraline.openverse",
       "name": "Openverse audio",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "apiVersion": 1,
-      "description": "Openly licensed songs and sounds from Openverse (Jamendo, Freesound, Wikimedia Commons and more), searchable and playable in full. No account needed.",
+      "description": "Creative Commons and public domain: songs from Openverse (Jamendo, Freesound, Wikimedia Commons and more), searchable and playable in full. No account needed.",
       "author": "Paraline",
       "provides": [
         "music.metadata",
@@ -20,9 +20,9 @@
         "webview": false
       },
       "contentRating": "safe",
-      "package": "packages/community.paraline.openverse-1.0.1.zip",
-      "sha256": "3b23ad692933df8d284e0850cf9a74ef706e02015d17125c134dd7250c3ec00b",
-      "size": 1573
+      "package": "packages/community.paraline.openverse-1.0.2.zip",
+      "sha256": "3d32a1abae7b3346b4440aa6c7fc8ce8bbec34326c660c61c235e450d00bb487",
+      "size": 1660
     }
   ]
 }

@@ -1,17 +1,18 @@
-// community.paraline.openverse 1.0.1. Built by raygun-ext from src/index.ts; do not edit.
+// community.paraline.openverse 1.0.2. Built by raygun-ext from src/index.ts; do not edit.
 (() => {
   // src/index.ts
   var API = "https://api.openverse.org/v1/audio/";
   var MAX = 20;
+  var LICENCES = ["by", "by-sa", "by-nc", "by-nd", "by-nc-sa", "by-nc-nd", "cc0", "pdm"];
   var get = async (query, size) => {
-    var url = API + "?q=" + encodeURIComponent(query) + "&page_size=" + Math.min(MAX, Math.max(1, size)) + // Asked of Openverse too, so a page isn't spent on sound effects.
+    var url = API + "?q=" + encodeURIComponent(query) + "&page_size=" + Math.min(MAX, Math.max(1, size)) + "&license=" + LICENCES.join(",") + // Asked of Openverse too, so a page isn't spent on sound effects.
     "&category=music,audiobook&mature=false";
     var response = await raygun.http.fetch(url);
     if (!response.ok) throw new Error("Openverse answered HTTP " + response.status);
     var body = await response.json();
     return Array.isArray(body.results) ? body.results : [];
   };
-  var playable = (work) => work && work.url && (!work.category || work.category === "music" || work.category === "audiobook");
+  var playable = (work) => work && work.url && LICENCES.indexOf(String(work.license || "").toLowerCase()) >= 0 && (!work.category || work.category === "music" || work.category === "audiobook");
   var source = (work) => ({ kind: "url", url: work.url, headers: {} });
   var format = (filetype) => typeof filetype === "string" && filetype ? filetype.replace(/^mp3\d+$/i, "mp3").toUpperCase() : null;
   var toTrack = (work) => ({

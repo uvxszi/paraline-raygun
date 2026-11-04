@@ -1,12 +1,15 @@
 // Openverse audio — Paraline, MIT.
-// Openly licensed audio from Openverse's public API: search, and full streams from each work's
-// own file (Jamendo, Freesound, Wikimedia Commons…).
+// Creative Commons and public-domain audio from Openverse's public API: search, and full streams
+// from each work's own file (Jamendo, Freesound, Wikimedia Commons…).
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare const raygun: any;
 
 var API = "https://api.openverse.org/v1/audio/";
 // The most Openverse returns per page without an API key; more is refused with HTTP 401.
 var MAX = 20;
+// The licences asked for and kept: Creative Commons' licences, CC0 and the Public Domain Mark.
+// Openverse also lists works under the retired Sampling licences, which allow less; those stay out.
+var LICENCES = ["by", "by-sa", "by-nc", "by-nd", "by-nc-sa", "by-nc-nd", "cc0", "pdm"];
 
 var get = async (query: string, size: number): Promise<any[]> => {
   var url =
@@ -15,6 +18,8 @@ var get = async (query: string, size: number): Promise<any[]> => {
     encodeURIComponent(query) +
     "&page_size=" +
     Math.min(MAX, Math.max(1, size)) +
+    "&license=" +
+    LICENCES.join(",") +
     // Asked of Openverse too, so a page isn't spent on sound effects.
     "&category=music,audiobook" +
     "&mature=false";
@@ -24,9 +29,13 @@ var get = async (query: string, size: number): Promise<any[]> => {
   return Array.isArray(body.results) ? body.results : [];
 };
 
-// Music, not sound effects, and only works with a file to play.
+// Openly licensed music, not sound effects, and only works with a file to play. The licence is
+// checked here too, so a change on Openverse's side can't let other works through.
 var playable = (work: any) =>
-  work && work.url && (!work.category || work.category === "music" || work.category === "audiobook");
+  work &&
+  work.url &&
+  LICENCES.indexOf(String(work.license || "").toLowerCase()) >= 0 &&
+  (!work.category || work.category === "music" || work.category === "audiobook");
 
 var source = (work: any) => ({ kind: "url", url: work.url, headers: {} });
 
