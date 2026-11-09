@@ -1,0 +1,50 @@
+[
+  {
+    "id": "org.stremio.opensubtitlesv3",
+    "name": "OpenSubtitles v3",
+    "version": "1.0.0",
+    "apiVersion": 1,
+    "description": "Subtitles for films and series in many languages, from OpenSubtitles.org. Stremio's official subtitles addon; the subtitles are their uploaders' work, under OpenSubtitles.org's terms.",
+    "author": "Stremio",
+    "provides": ["stremio.subtitles"],
+    "permissions": {
+      "net": ["opensubtitles-v3.strem.io"]
+    },
+    "contentRating": "safe",
+    "package": "https://opensubtitles-v3.strem.io/manifest.json",
+    "sha256": "",
+    "size": 0
+  },
+  {
+    "id": "com.linvo.cinemeta",
+    "name": "Cinemeta",
+    "version": "3.0.14",
+    "apiVersion": 1,
+    "description": "Details of films and series: plots, cast, episodes, trailers and IMDb ratings, with popular and new catalogues. Stremio's official metadata addon.",
+    "author": "Stremio",
+    "provides": ["stremio.catalog", "stremio.meta"],
+    "permissions": {
+      "net": ["v3-cinemeta.strem.io"]
+    },
+    "contentRating": "safe",
+    "package": "https://v3-cinemeta.strem.io/manifest.json",
+    "sha256": "",
+    "size": 0
+  },
+  {
+    "id": "org.stremio.watchhub",
+    "name": "WatchHub",
+    "version": "1.15.0",
+    "apiVersion": 1,
+    "description": "Where a film or series streams legally: links to the services that carry it (Netflix, Hulu, Amazon and others), by country. Stremio's official addon.",
+    "author": "Stremio",
+    "provides": ["stremio.stream"],
+    "permissions": {
+      "net": ["watchhub.strem.io"]
+    },
+    "contentRating": "safe",
+    "package": "https://watchhub.strem.io/manifest.json",
+    "sha256": "",
+    "size": 0
+  }
+]

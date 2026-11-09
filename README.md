@@ -22,26 +22,37 @@ Raygun 1.0.0 used two separate addresses, which stay published: `raygun/index.js
 
 ## Contents
 
-| Source | Licence | What it gives |
-| --- | --- | --- |
-| Project Gutenberg | Public domain | Books, split into chapters |
-| Standard Ebooks | Public domain (CC0) | Edited editions of classic books, chapter by chapter |
-| Wikisource | Public domain, Creative Commons | Novels, stories, poems and plays proofread by volunteers |
-| LibriVox | Public domain | Audiobooks read by volunteers |
-| Loyal Books | Public domain | Audiobooks |
-| Internet Archive | Public domain, Creative Commons | Netlabel and Musopen recordings; public-domain films |
-| Internet Archive comics | Public domain | Comics published more than 95 years ago |
-| Wikimedia Commons | Public domain, Creative Commons | Recordings and videos, with subtitles |
-| NASA Image and Video Library | Public domain (NASA media) | NASA's videos, with captions |
-| Blender open movies | CC BY, CC BY-SA | Blender Studio's open movies |
-| Pepper&Carrot | CC BY 4.0 | David Revoy's webcomic |
-| xkcd | CC BY-NC 2.5 | Randall Munroe's webcomic |
-| MusicBrainz | CC0, CC BY-SA (metadata) | Song, album and artist details, genres, credits and cover art from the Cover Art Archive |
-| Openverse audio | Creative Commons, CC0, Public Domain Mark | Songs from Jamendo, Freesound, Wikimedia Commons and more |
+| Source                       | Licence                                   | What it gives                                                                            |
+| ---------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Project Gutenberg            | Public domain                             | Books, split into chapters                                                               |
+| Standard Ebooks              | Public domain (CC0)                       | Edited editions of classic books, chapter by chapter                                     |
+| Wikisource                   | Public domain, Creative Commons           | Novels, stories, poems and plays proofread by volunteers                                 |
+| LibriVox                     | Public domain                             | Audiobooks read by volunteers                                                            |
+| Loyal Books                  | Public domain                             | Audiobooks                                                                               |
+| Internet Archive             | Public domain, Creative Commons           | Netlabel and Musopen recordings; public-domain films                                     |
+| Internet Archive comics      | Public domain                             | Comics published more than 95 years ago                                                  |
+| Wikimedia Commons            | Public domain, Creative Commons           | Recordings and videos, with subtitles                                                    |
+| NASA Image and Video Library | Public domain (NASA media)                | NASA's videos, with captions                                                             |
+| Blender open movies          | CC BY, CC BY-SA                           | Blender Studio's open movies                                                             |
+| Pepper&Carrot                | CC BY 4.0                                 | David Revoy's webcomic                                                                   |
+| xkcd                         | CC BY-NC 2.5                              | Randall Munroe's webcomic                                                                |
+| MusicBrainz                  | CC0, CC BY-SA (metadata)                  | Song, album and artist details, genres, credits and cover art from the Cover Art Archive |
+| ListenBrainz charts          | CC0 (statistics)                          | The songs most listened to on ListenBrainz this week, month, year and of all time        |
+| Openverse audio              | Creative Commons, CC0, Public Domain Mark | Songs from Jamendo, Freesound, Wikimedia Commons and more                                |
 
 Raygun's own sources are listed by their address in Raygun's repository (`repo/` in `uvxszi/raygun`). Openverse audio is a community source kept here, in `raygun/`.
 
-[`stremio/addons.md`](stremio/addons.md) lists legal Stremio addons for Raygun's Addons page.
+## Stremio addons
+
+Paraline also lists Stremio's own official addons, which Raygun 1.3.0 offers as sources to add (`stremio/addons.json`, under `addons` in the index; earlier versions of Raygun skip them). Paraline hosts nothing of theirs: each is run by Stremio, and what it gives follows that service's own terms.
+
+| Addon            | What it gives                                                                |
+| ---------------- | ---------------------------------------------------------------------------- |
+| OpenSubtitles v3 | Subtitles for films and series, from OpenSubtitles.org (its uploaders' work) |
+| Cinemeta         | Details of films and series, with IMDb ratings                               |
+| WatchHub         | Where a title streams legally                                                |
+
+[`stremio/addons.md`](stremio/addons.md) lists these and other legal Stremio addons by address.
 
 ## Later
 
@@ -49,13 +60,14 @@ Paraline may later host remastered, colourized or upscaled versions of public-do
 
 ## Layout
 
-| Path | What | Written by |
-| --- | --- | --- |
-| `index.json` | Paraline's index, in Raygun's format | `tools/build_index.py` |
-| `raygun/sources/<name>/` | A community source: `raygun-extension.json`, `src/`, built `dist/` | hand, then `raygun-ext` |
-| `raygun/packages/`, `raygun/index.json` | The community sources' packages and index | `raygun-ext pack-all` |
-| `shosetsu/index.json` | An empty index at the address Raygun 1.0.0 added | `tools/build_index.py` |
-| `stremio/addons.md` | Stremio addon addresses | hand |
+| Path                                    | What                                                               | Written by              |
+| --------------------------------------- | ------------------------------------------------------------------ | ----------------------- |
+| `index.json`                            | Paraline's index, in Raygun's format                               | `tools/build_index.py`  |
+| `raygun/sources/<name>/`                | A community source: `raygun-extension.json`, `src/`, built `dist/` | hand, then `raygun-ext` |
+| `raygun/packages/`, `raygun/index.json` | The community sources' packages and index                          | `raygun-ext pack-all`   |
+| `shosetsu/index.json`                   | An empty index at the address Raygun 1.0.0 added                   | `tools/build_index.py`  |
+| `stremio/addons.json`                   | The Stremio addons the index lists                                 | hand                    |
+| `stremio/addons.md`                     | Stremio addon addresses                                            | hand                    |
 
 ## Publishing
 

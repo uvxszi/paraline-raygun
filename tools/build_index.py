@@ -5,6 +5,8 @@
     in Raygun's repository and are listed by their address there;
   - the Raygun-format sources in raygun/ (raygun/index.json, written by raygun-ext);
   - the scripts in shosetsu/src/ (Shosetsu's format), if any, with the libraries they need.
+  - the Stremio addons in stremio/addons.json, under "addons": Raygun 1.3.0 lists them as
+    sources to add, and earlier versions (which don't know them) skip that key;
 - lib/: copies of shosetsu/lib/. Raygun reads a script's libraries from lib/ beside the index.
 - shosetsu/index.json: the scripts as a Shosetsu repository. Raygun 1.0.0 added this address as
   "Paraline Raygun", so it stays published, and lists nothing while Paraline carries no scripts.
@@ -144,6 +146,23 @@ def community_sources(allow_unpublished):
     return entries
 
 
+def stremio_addons():
+    """The Stremio addons Paraline lists: entries whose package is the addon's manifest."""
+    path = ROOT / "stremio" / "addons.json"
+    if not path.is_file():
+        return []
+    entries = read_json(path)
+    for entry in entries:
+        package = entry.get("package", "")
+        if not (package.startswith("https://") and package.endswith("/manifest.json")):
+            fail(f"{path}: {entry.get('id')}'s package must be its manifest's https address")
+        if not entry.get("description"):
+            fail(f"{path}: {entry.get('id')} needs a description saying what it gives")
+        entry.setdefault("sha256", "")
+        entry.setdefault("size", 0)
+    return sorted(entries, key=lambda entry: entry["id"])
+
+
 def scripts_and_entries():
     """The Shosetsu scripts, as Shosetsu index entries and as Raygun index entries."""
     scripts, entries = [], []
@@ -225,7 +244,8 @@ def main():
     first_party = raygun_extensions(raygun, arguments.allow_unpublished)
     community = community_sources(arguments.allow_unpublished)
     extensions = first_party + community + script_entries
-    ids = [entry["id"] for entry in extensions]
+    addons = stremio_addons()
+    ids = [entry["id"] for entry in extensions + addons]
     duplicates = sorted({extension for extension in ids if ids.count(extension) > 1})
     if duplicates:
         fail("listed twice: " + ", ".join(duplicates))
@@ -238,10 +258,12 @@ def main():
         "formatVersion": 1,
         "name": NAME,
         "extensions": extensions,
+        "addons": addons,
         "libraries": [{key: lib[key] for key in ("name", "ver", "hash")} for lib in libs],
     })
     print(f"index.json: {count(first_party, 'Raygun extension')}, "
           f"{count(community, 'community source')}, {count(script_entries, 'script')}, "
+          f"{count(addons, 'Stremio addon')}, "
           f"{count(libs, 'library', 'libraries')}")
     print(f"shosetsu/index.json: {count(scripts, 'script')}")
 

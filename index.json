@@ -114,6 +114,27 @@
       "size": 3151
     },
     {
+      "id": "dev.raygun.listenbrainz",
+      "name": "ListenBrainz charts",
+      "version": "1.0.0",
+      "apiVersion": 1,
+      "description": "Charts under CC0: the songs most listened to on ListenBrainz, the open listening-history project of the MetaBrainz Foundation, this week, this month, this year and of all time. Cover art from the Cover Art Archive.",
+      "author": "Raygun",
+      "provides": [
+        "music.charts"
+      ],
+      "permissions": {
+        "net": [
+          "api.listenbrainz.org"
+        ],
+        "webview": false
+      },
+      "contentRating": "safe",
+      "package": "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/packages/dev.raygun.listenbrainz-1.0.0.zip",
+      "sha256": "3b06ee5f81e1819b1aab4c12f3e46f3d1a21633d91cb3bb20b8b89a035db8f32",
+      "size": 1512
+    },
+    {
       "id": "dev.raygun.loyalbooks",
       "name": "Loyal Books",
       "version": "1.0.1",
@@ -310,6 +331,69 @@
       "package": "raygun/packages/community.paraline.openverse-1.0.2.zip",
       "sha256": "3d32a1abae7b3346b4440aa6c7fc8ce8bbec34326c660c61c235e450d00bb487",
       "size": 1660
+    }
+  ],
+  "addons": [
+    {
+      "id": "com.linvo.cinemeta",
+      "name": "Cinemeta",
+      "version": "3.0.14",
+      "apiVersion": 1,
+      "description": "Details of films and series: plots, cast, episodes, trailers and IMDb ratings, with popular and new catalogues. Stremio's official metadata addon.",
+      "author": "Stremio",
+      "provides": [
+        "stremio.catalog",
+        "stremio.meta"
+      ],
+      "permissions": {
+        "net": [
+          "v3-cinemeta.strem.io"
+        ]
+      },
+      "contentRating": "safe",
+      "package": "https://v3-cinemeta.strem.io/manifest.json",
+      "sha256": "",
+      "size": 0
+    },
+    {
+      "id": "org.stremio.opensubtitlesv3",
+      "name": "OpenSubtitles v3",
+      "version": "1.0.0",
+      "apiVersion": 1,
+      "description": "Subtitles for films and series in many languages, from OpenSubtitles.org. Stremio's official subtitles addon; the subtitles are their uploaders' work, under OpenSubtitles.org's terms.",
+      "author": "Stremio",
+      "provides": [
+        "stremio.subtitles"
+      ],
+      "permissions": {
+        "net": [
+          "opensubtitles-v3.strem.io"
+        ]
+      },
+      "contentRating": "safe",
+      "package": "https://opensubtitles-v3.strem.io/manifest.json",
+      "sha256": "",
+      "size": 0
+    },
+    {
+      "id": "org.stremio.watchhub",
+      "name": "WatchHub",
+      "version": "1.15.0",
+      "apiVersion": 1,
+      "description": "Where a film or series streams legally: links to the services that carry it (Netflix, Hulu, Amazon and others), by country. Stremio's official addon.",
+      "author": "Stremio",
+      "provides": [
+        "stremio.stream"
+      ],
+      "permissions": {
+        "net": [
+          "watchhub.strem.io"
+        ]
+      },
+      "contentRating": "safe",
+      "package": "https://watchhub.strem.io/manifest.json",
+      "sha256": "",
+      "size": 0
     }
   ],
   "libraries": []
