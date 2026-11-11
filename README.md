@@ -21,7 +21,8 @@ Raygun 1.0.0 used two separate addresses, which stay published: `raygun/index.js
 - Some sources need a key of your own: Podcast Index, Last.fm, Europeana, the National Archives and the National Park Service. Their terms keep keys personal, so you enter yours in the source's settings; Raygun asks such a source nothing until it has one.
 - Each source reads the official API or feed of the site or archive that publishes the works, and keeps within its published request limits.
 - No source gets around bot checks, sign-ins or paywalls.
-- Where uploaders set their own licences, a source keeps to the collections and dates whose status holds up, rather than taking every upload's word for it. Archives' items are listed only when their own records say they're free to use (the Library of Congress: no known restrictions, and old enough to be in the public domain; the National Archives: unrestricted; the National Park Service: made by the park service or another federal agency; Europeana: open reuse).
+- Where uploaders set their own licences, a source keeps to the collections and dates whose status holds up, rather than taking every upload's word for it. Archives' items are listed only when their own records say they're free to use (the Library of Congress: no known restrictions, and old enough to be in the public domain; the National Archives: unrestricted; the National Park Service: made by the park service or another federal agency; Europeana: open reuse; the Internet Archive's books: scanned with libraries, marked not in copyright and published more than 95 years ago, and not lent).
+- PeerTube videos are listed only when their uploader published them under a Creative Commons licence or CC0, and each video's instance is asked again when it opens. Live streams are left out.
 - ESA/Hubble's and ESA/Webb's videos are CC BY 4.0; their soundtracks are licensed separately and play as published.
 
 ## Contents
@@ -41,6 +42,7 @@ Raygun 1.0.0 used two separate addresses, which stay published: `raygun/index.js
 | Loyal Books                  | Public domain                             | Audiobooks                                                                                                           |
 | Gutenberg open audiobooks    | Public domain (Project Gutenberg License) | Project Gutenberg's books read by neural voices                                                                      |
 | Internet Archive             | Public domain, Creative Commons           | Netlabel, Musopen and Free Music Archive recordings; public-domain films; MIT OpenCourseWare lectures                |
+| Internet Archive books       | Public domain                             | Books published more than 95 years ago, scanned with libraries, read as PDFs                                         |
 | Internet Archive comics      | Public domain                             | Comics published more than 95 years ago                                                                              |
 | Wikimedia Commons            | Public domain, Creative Commons           | Recordings and videos, with subtitles                                                                                |
 | Library of Congress          | Public domain                             | Films published before 1931 and recordings before 1926, from Edison on                                               |
@@ -50,8 +52,10 @@ Raygun 1.0.0 used two separate addresses, which stay published: `raygun/index.js
 | NASA Image and Video Library | Public domain (NASA media)                | NASA's videos, with captions                                                                                         |
 | ESA/Hubble and ESA/Webb      | CC BY 4.0                                 | The Hubble and Webb space telescopes' videos                                                                         |
 | Blender open movies          | CC BY, CC BY-SA                           | Blender Studio's open movies                                                                                         |
+| PeerTube                     | Creative Commons, CC0                     | Videos from PeerTube's instances, found through Sepia Search, with captions and comments                             |
 | Pepper&Carrot                | CC BY 4.0                                 | David Revoy's webcomic                                                                                               |
 | xkcd                         | CC BY-NC 2.5                              | Randall Munroe's webcomic                                                                                            |
+| Open webcomics               | CC BY-NC-ND 3.0, CC BY-NC-SA 4.0          | Sandra and Woo by Oliver Knörzer and Powree, and Daniel Stori's turnoff.us                                           |
 | MusicBrainz                  | CC0, CC BY-SA (metadata)                  | Song, album and artist details, genres, credits and cover art from the Cover Art Archive                             |
 | ListenBrainz                 | CC0 (statistics)                          | The most listened-to songs, genre radios, similar artists and songs, and artists' new releases                       |
 | Last.fm                      | Last.fm API terms (non-commercial)        | Charts by country and genre, song tags, similar artists and songs, artists' biographies (with your own free API key) |
