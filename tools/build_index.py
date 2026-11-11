@@ -39,6 +39,11 @@ LIB = ROOT / "lib"
 NAME = "Paraline"
 # Where Raygun's repo/ folder is published.
 RAYGUN_REPO = "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/"
+
+# Raygun extensions published in Raygun's own repository but not listed here, since Paraline
+# lists only open sources: site scripts for services that aren't openly licensed are added by
+# their package's address instead.
+NOT_LISTED = {"dev.raygun.noutube"}
 ICONS = "https://gitlab.com/shosetsuorg/extensions/-/raw/dev/icons/"
 # What each script gives and under which licence, for Raygun's catalogue, by file name.
 DESCRIPTIONS = {}
@@ -120,6 +125,8 @@ def raygun_extensions(raygun, allow_unpublished):
         "Run `pnpm repo:publish` in Raygun, commit and push it, then run this again.",
         allow_unpublished,
     ):
+        if entry["id"] in NOT_LISTED:
+            continue
         entry = checked(entry, raygun / "repo")
         entry["package"] = RAYGUN_REPO + entry["package"]
         if entry.get("icon") and "://" not in entry["icon"]:
