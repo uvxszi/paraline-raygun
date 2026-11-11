@@ -14,8 +14,9 @@ Raygun 1.0.0 used two separate addresses, which stay published: `raygun/index.js
 
 ## Rules for sources
 
-- The works are in the public domain, or under a licence that allows redistribution: a Creative Commons licence, CC0 or a public-domain mark.
+- The works are in the public domain, or under a licence that allows redistribution: a Creative Commons licence, CC0 or a public-domain mark. The Live Music Archive's shows come from artists who allow free, non-commercial sharing of them; shows an artist keeps to streaming only are left out.
 - Each source's description names that licence.
+- Podcast directories only name feeds that their publishers make public for any podcast app. Raygun reads each feed itself; every podcast keeps its own terms.
 - Each source reads the official API or feed of the site or archive that publishes the works.
 - No source gets around bot checks, sign-ins or paywalls.
 - Where uploaders set their own licences, a source keeps to the collections and dates whose status holds up, rather than taking every upload's word for it.
@@ -38,6 +39,11 @@ Raygun 1.0.0 used two separate addresses, which stay published: `raygun/index.js
 | xkcd                         | CC BY-NC 2.5                              | Randall Munroe's webcomic                                                                |
 | MusicBrainz                  | CC0, CC BY-SA (metadata)                  | Song, album and artist details, genres, credits and cover art from the Cover Art Archive |
 | ListenBrainz charts          | CC0 (statistics)                          | The songs most listened to on ListenBrainz this week, month, year and of all time        |
+| Incompetech                  | CC BY 4.0                                 | Kevin MacLeod's music, with his collections as albums and charts by genre and mood       |
+| Live Music Archive           | Free non-commercial sharing (artists')    | Concert recordings by trade-friendly artists, with whole concerts as albums              |
+| Gutenberg open audiobooks    | Public domain (Project Gutenberg License) | Project Gutenberg's books read by neural voices                                          |
+| fyyd podcasts                | Directory of public feeds                 | Podcasts to find and follow, and the most active ones in a language                      |
+| Podcast Index                | Directory of public feeds                 | Podcasts to find and follow, and what's trending (with your own free API key)            |
 | Openverse audio              | Creative Commons, CC0, Public Domain Mark | Songs from Jamendo, Freesound, Wikimedia Commons and more                                |
 
 Raygun's own sources are listed by their address in Raygun's repository (`repo/` in `uvxszi/raygun`). Openverse audio is a community source kept here, in `raygun/`.
