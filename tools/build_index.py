@@ -43,7 +43,7 @@ RAYGUN_REPO = "https://raw.githubusercontent.com/uvxszi/raygun/main/repo/"
 # Raygun extensions published in Raygun's own repository but not listed here, since Paraline
 # lists only open sources: site scripts for services that aren't openly licensed are added by
 # their package's address instead.
-NOT_LISTED = {"dev.raygun.noutube"}
+NOT_LISTED = {"dev.raygun.noutube", "dev.raygun.twitch"}
 ICONS = "https://gitlab.com/shosetsuorg/extensions/-/raw/dev/icons/"
 # What each script gives and under which licence, for Raygun's catalogue, by file name.
 DESCRIPTIONS = {}
